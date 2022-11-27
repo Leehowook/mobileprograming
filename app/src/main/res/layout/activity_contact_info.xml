@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_contact_create_graybox_cl"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:paddingBottom="10dp"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="103dp">
+
+        <TextView
+            android:id="@+id/activity_contact_create_phone_number_tv"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:text="010-3333-4444"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="40dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화번호"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_contact_create_save_bt2"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_background_round_corners"
+        android:text="삭제"
+        android:textSize="20dp"
+
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="670dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_contact_create_back_bt"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_background_round_corners"
+        android:text="공유"
+        android:textSize="20dp"
+
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="670dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_contact_create_save_bt"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_background_round_corners"
+        android:text="편집"
+        android:textSize="20dp"
+
+        tools:layout_editor_absoluteX="228dp"
+        tools:layout_editor_absoluteY="670dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_todoread_back_bt2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+
+        android:background="@drawable/button_background_round_corners"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="조현석"
+        android:textColor="@color/bamincolor"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="33dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
