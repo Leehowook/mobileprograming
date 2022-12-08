@@ -65,7 +65,7 @@
         android:id="@+id/activity_main_todolist_lv"
         android:layout_width="350dp"
         android:layout_height="500dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:background="@color/gray"
         android:dividerHeight="15dp"
 
