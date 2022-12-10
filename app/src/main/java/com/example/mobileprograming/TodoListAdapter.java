@@ -1,5 +1,6 @@
 package com.example.mobileprograming;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mobileprograming.model.TodoItem;
 
@@ -56,6 +58,20 @@ public class TodoListAdapter extends BaseAdapter {
                 dbService.deleteToDoItem(todoItem.getId());
                 dataList.remove(position);
                 notifyDataSetChanged();
+                Toast toast = Toast.makeText(parent.getContext(), todoItem.getTitle() +"일정을 완료하였습니다.", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(parent.getContext(), TodoUpdateActivity.class);
+                intent.putExtra("id", todoItem.getId());
+                intent.putExtra("title", todoItem.getTitle());
+                intent.putExtra("content", todoItem.getContent());
+                intent.putExtra("date", todoItem.getDate());
+                parent.getContext().startActivity(intent);
             }
         });
 

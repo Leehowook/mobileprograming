@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoreadActivity">
+    tools:context=".TodoUpdateActivity">
 
     <TextView
         android:id="@+id/activity_todoread_updatedelete_tv"
@@ -73,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_todoread_todocontents_et"
             />
         <TimePicker
-            android:id="@+id/activity_todocreate_tp"
+            android:id="@+id/activity_todoread_tp"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             app:layout_constraintLeft_toLeftOf="parent"
