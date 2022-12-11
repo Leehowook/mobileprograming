@@ -23,7 +23,7 @@
             android:name=".ContactinfoActivity"
             android:exported="false" />
         <activity
-            android:name=".TodoreadActivity"
+            android:name=".TodoUpdateActivity"
             android:exported="false" />
         <activity
             android:name=".TodocreateActivity"

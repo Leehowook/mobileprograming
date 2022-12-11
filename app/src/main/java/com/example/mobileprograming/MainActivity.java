@@ -29,9 +29,8 @@ public class MainActivity extends AppCompatActivity {
         ListView todolist = (ListView) findViewById(R.id.activity_main_todolist_lv);
         todolist.setAdapter(new TodoListAdapter(todoItems, dbService));
 
-
-        Button buttongophonebook= (Button) findViewById(R.id.activity_main_go_phonebook_bt);
-        buttongophonebook.setOnClickListener(new View.OnClickListener() {
+        Button buttonGoPhonebook= (Button) findViewById(R.id.activity_main_go_phonebook_bt);
+        buttonGoPhonebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(getApplicationContext(),PhonebookActivity.class);
@@ -39,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        Button buttonmainadd= (Button) findViewById(R.id.activity_main_add_bt);
-        buttonmainadd.setOnClickListener(new View.OnClickListener() {
+        Button buttonMainAdd= (Button) findViewById(R.id.activity_main_add_bt);
+        buttonMainAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(getApplicationContext(),TodocreateActivity.class);

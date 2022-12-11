@@ -31,8 +31,6 @@ public class DatabaseService {
                     "todo_date text," +
                     "todo_is_done integer)";
             database.execSQL(sql);
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -44,8 +42,6 @@ public class DatabaseService {
                     "contact_mobile text," +
                     "contact_is_favorite integer)";
             database.execSQL(sql);
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -55,8 +51,6 @@ public class DatabaseService {
             String sql = "insert into todo(todo_title, todo_content, todo_date, todo_is_done) values(?, ?, ?, ?)";
             Object[] params = {title, content, date, isDone};
             database.execSQL(sql, params);
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -65,8 +59,6 @@ public class DatabaseService {
             String sql = "insert into contact(contact_name, contact_mobile, contact_is_favorite) values(?, ?, ?)";
             Object[] params = {name, mobile, isFavorite};
             database.execSQL(sql, params);
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -82,8 +74,6 @@ public class DatabaseService {
                 int isDone = cursor.getInt(4);
                 Log.d("DB", "id : " + id + ", title : " + title + ", content : " + content + ", date : " + date + ", isDone : " + isDone);
             }
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -117,8 +107,6 @@ public class DatabaseService {
                 TodoItem todoItem = new TodoItem(id, title, content, date, isDone);
                 todoItemList.add(todoItem);
             }
-        }else {
-            Log.d("DB", "DB is null");
         }
         return todoItemList;
     }
@@ -136,8 +124,6 @@ public class DatabaseService {
                 ContactItem contactItem = new ContactItem(id, name, phone, isFavorite);
                 contactItemList.add(contactItem);
             }
-        }else {
-            Log.d("DB", "DB is null");
         }
         return contactItemList;
     }
@@ -146,8 +132,6 @@ public class DatabaseService {
         if(database!= null) {
             String sql = "delete from todo";
             database.execSQL(sql);
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -156,8 +140,6 @@ public class DatabaseService {
             String sql = "delete from todo where todo_id = ?";
             Object[] params = {id};
             database.execSQL(sql, params);
-        }else {
-            Log.d("DB", "DB is null");
         }
     }
 
@@ -166,8 +148,22 @@ public class DatabaseService {
             String sql = "delete from contact where contact_id = ?";
             Object[] params = {id};
             database.execSQL(sql, params);
-        }else {
-            Log.d("DB", "DB is null");
+        }
+    }
+
+    public void updateToDoItem(int id, String title, String content, String date){
+        if(database!= null) {
+            String sql = "update todo set todo_title = ?, todo_content = ?, todo_date = ?, todo_is_done = ? where todo_id = ?";
+            Object[] params = {title, content, date, 0, id};
+            database.execSQL(sql, params);
+        }
+    }
+
+    public void updateContactItem(int id, String name, String mobile, boolean isFavorite){
+        if(database!= null) {
+            String sql = "update contact set contact_name = ?, contact_mobile = ?, contact_is_favorite = ? where contact_id = ?";
+            Object[] params = {name, mobile, isFavorite, id};
+            database.execSQL(sql, params);
         }
     }
 }
