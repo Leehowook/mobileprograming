@@ -103,4 +103,16 @@ public class ContactListAdapter extends BaseAdapter {
         });
         return convertView;
     }
+
+    public void searchContactName(String keyword) {
+        dataList.clear();
+        dataList.addAll(dbService.searchContactName(keyword));
+        notifyDataSetChanged();
+    }
+
+    public void searchFavorite() {
+        dataList.clear();
+        dataList.addAll(dbService.searchFavorite());
+        notifyDataSetChanged();
+    }
 }

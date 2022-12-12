@@ -91,4 +91,13 @@ public class TodoListAdapter extends BaseAdapter {
         todoDate.setText(dateStr + " " + time);
         return convertView;
     }
+
+
+
+    public void searchTodoTitle(String keyword) {
+        dataList.clear();
+        dataList.addAll(dbService.searchTodoTitle(keyword));
+        notifyDataSetChanged();
+    }
+
 }

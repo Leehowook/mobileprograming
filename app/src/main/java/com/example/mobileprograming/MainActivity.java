@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<TodoItem> todoItems = dbService.getTodoItemListFromDB();
 
         ListView todolist = (ListView) findViewById(R.id.activity_main_todolist_lv);
-        todolist.setAdapter(new TodoListAdapter(todoItems, dbService));
+        TodoListAdapter todoListAdapter = new TodoListAdapter(todoItems, dbService);
+        todolist.setAdapter(todoListAdapter);
 
         Button buttonGoPhonebook= (Button) findViewById(R.id.activity_main_go_phonebook_bt);
         buttonGoPhonebook.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         Button buttonMainAdd= (Button) findViewById(R.id.activity_main_add_bt);
         buttonMainAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent myIntent = new Intent(getApplicationContext(),TodocreateActivity.class);
                 startActivity(myIntent);
                 finish();
+            }
+        });
+
+        Button butttonSearch= (Button) findViewById(R.id.activity_main_search_bt);
+        butttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                todoListAdapter.searchTodoTitle("sss");
             }
         });
 
