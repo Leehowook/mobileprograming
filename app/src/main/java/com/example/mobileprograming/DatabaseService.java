@@ -8,6 +8,7 @@ import com.example.mobileprograming.model.ContactItem;
 import com.example.mobileprograming.model.TodoItem;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class DatabaseService {
 
@@ -165,5 +166,60 @@ public class DatabaseService {
             Object[] params = {name, mobile, isFavorite, id};
             database.execSQL(sql, params);
         }
+    }
+
+    public ArrayList<TodoItem> searchTodoTitle(String keyword) {
+        ArrayList<TodoItem> todoItemList = new ArrayList<>();
+        if(database!= null) {
+            String sql = "select todo_id, todo_title, todo_content, todo_date, todo_is_done from todo where todo_title like ?";
+            String[] params = {"%" + keyword + "%"};
+            Cursor cursor = database.rawQuery(sql, params);
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String content = cursor.getString(2);
+                String date = cursor.getString(3);
+                boolean isDone = cursor.getInt(4) == 1;
+                TodoItem todoItem = new TodoItem(id, title, content, date, isDone);
+                todoItemList.add(todoItem);
+            }
+        }
+        return todoItemList;
+    }
+
+    public ArrayList<ContactItem> searchContactName(String keyword) {
+        ArrayList<ContactItem> contactItemList = new ArrayList<>();
+        if(database!= null) {
+            String sql = "select contact_id, contact_name, contact_mobile, contact_is_favorite from contact where contact_name like ?";
+            String[] params = {"%" + keyword + "%"};
+            Cursor cursor = database.rawQuery(sql, params);
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String phone = cursor.getString(2);
+                boolean isFavorite = cursor.getInt(3) == 1;
+                ContactItem contactItem = new ContactItem(id, name, phone, isFavorite);
+                contactItemList.add(contactItem);
+            }
+        }
+        return contactItemList;
+    }
+
+    public ArrayList<ContactItem> searchFavorite() {
+        ArrayList<ContactItem> contactItemList = new ArrayList<>();
+        if(database!= null) {
+            String sql = "select contact_id, contact_name, contact_mobile, contact_is_favorite from contact where contact_is_favorite = ?";
+            String[] params = {"1"};
+            Cursor cursor = database.rawQuery(sql, params);
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String phone = cursor.getString(2);
+                boolean isFavorite = cursor.getInt(3) == 1;
+                ContactItem contactItem = new ContactItem(id, name, phone, isFavorite);
+                contactItemList.add(contactItem);
+            }
+        }
+        return contactItemList;
     }
 }

@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.mobileprograming.model.TodoItem;
 
+import java.text.ParsePosition;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TodoListAdapter extends BaseAdapter {
@@ -47,10 +50,17 @@ public class TodoListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.todo_item, parent, false);
         }
         TodoItem todoItem = (TodoItem) dataList.get(position);
+        String dateTimeStr = todoItem.getDate();
+        long date = Long.parseLong(dateTimeStr.substring(0, dateTimeStr.indexOf(" ")));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
+        String dateStr = calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+        String time = dateTimeStr.substring(dateTimeStr.indexOf(" ")).trim();
 
         CheckBox todoCheckBox = convertView.findViewById(R.id.todo_item_cb);
         TextView todoTitle = convertView.findViewById(R.id.todo_item_title_tv);
         TextView todoContent = convertView.findViewById(R.id.todo_item_contents_tv);
+        TextView todoDate = convertView.findViewById(R.id.todo_item_date_tv);
 
         todoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -78,6 +88,16 @@ public class TodoListAdapter extends BaseAdapter {
         todoCheckBox.setChecked(todoItem.getIsDone());
         todoTitle.setText(todoItem.getTitle());
         todoContent.setText(todoItem.getContent());
+        todoDate.setText(dateStr + " " + time);
         return convertView;
     }
+
+
+
+    public void searchTodoTitle(String keyword) {
+        dataList.clear();
+        dataList.addAll(dbService.searchTodoTitle(keyword));
+        notifyDataSetChanged();
+    }
+
 }

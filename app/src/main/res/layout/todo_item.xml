@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="320dp"
+    android:layout_width="370dp"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/item_background_round"
@@ -11,11 +11,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="5dp"
         />
     <TextView
         android:id="@+id/todo_item_title_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/todo_item_cb"
@@ -26,7 +27,7 @@
         />
     <TextView
         android:id="@+id/todo_item_contents_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/todo_item_title_tv"
         app:layout_constraintLeft_toLeftOf="@id/todo_item_title_tv"
@@ -42,5 +43,6 @@
         android:text="날짜,시간"
         android:textColor="@color/black"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/todo_item_title_tv"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

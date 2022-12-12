@@ -66,9 +66,11 @@ public class ContactListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 dbService.updateContactItem(contactItem.getId(), contactItem.getName(), contactItem.getMobile(), !contactItem.getIsFavorite());
-                notifyDataSetChanged();
                 String toastMessage = contactItem.getIsFavorite() ? "즐겨찾기에서 삭제되었습니다." : "즐겨찾기에 추가되었습니다.";
                 Toast.makeText(parent.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
+                dataList.clear();
+                dataList.addAll(dbService.getContactItemListFromDB());
+                notifyDataSetChanged();
             }
         });
 
@@ -100,5 +102,17 @@ public class ContactListAdapter extends BaseAdapter {
             }
         });
         return convertView;
+    }
+
+    public void searchContactName(String keyword) {
+        dataList.clear();
+        dataList.addAll(dbService.searchContactName(keyword));
+        notifyDataSetChanged();
+    }
+
+    public void searchFavorite() {
+        dataList.clear();
+        dataList.addAll(dbService.searchFavorite());
+        notifyDataSetChanged();
     }
 }
