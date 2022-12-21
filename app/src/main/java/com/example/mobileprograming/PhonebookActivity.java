@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,6 +68,16 @@ public class PhonebookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 contactListAdapter.searchFavorite();
+            }
+        });
+
+        EditText editTextSearchName= (EditText) findViewById(R.id.activity_phonebook_searchgraybox_edittext_et);
+        Button buttonSendSeachingName= (Button) findViewById(R.id.activity_phonebook_searchgraybox_sendbutton_bt);
+        buttonSendSeachingName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextSearchName.getText().toString();
+                contactListAdapter.searchContactName(name);
             }
         });
     }

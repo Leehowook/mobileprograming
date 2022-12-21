@@ -54,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ConstraintLayout mainconstraintLayoutgraybox = findViewById(R.id.activity_main_searchgraybox_cl);
-        Button butttonSearch= (Button) findViewById(R.id.activity_main_search_bt);
-        butttonSearch.setOnClickListener(new View.OnClickListener() {
+        Button buttonSearch= (Button) findViewById(R.id.activity_main_search_bt);
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mainconstraintLayoutgraybox.setVisibility(View.VISIBLE);
-                todoListAdapter.searchTodoTitle("sss");
             }
         });
 
@@ -68,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         buttonSendsearchTodoTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String searchtext = editTextsearch.getText().toString();
-                todoListAdapter.searchTodoTitle(searchtext);
+                String searchText = editTextsearch.getText().toString();
+                todoListAdapter.searchTodoTitle(searchText);
             }
         });
     }
