@@ -85,7 +85,6 @@ public class TodoListAdapter extends BaseAdapter {
             }
         });
 
-        todoCheckBox.setChecked(todoItem.getIsDone());
         todoTitle.setText(todoItem.getTitle());
         todoContent.setText(todoItem.getContent());
         todoDate.setText(dateStr + " " + time);
