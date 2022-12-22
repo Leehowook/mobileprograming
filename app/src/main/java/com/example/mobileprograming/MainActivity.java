@@ -27,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         dbService.createToDoTable();
 
+        // 샘플 일정 추가
+        dbService.insertToDoItem("마트 가기", "사과, 당근", "1600000000000 12:00");
+        dbService.insertToDoItem("운동하기", "달리기, 헬스", "1600000000000 12:00");
+        dbService.insertToDoItem("코딩하기", "안드로이드, 자바", "1600000000000 12:00");
+
         ArrayList<TodoItem> todoItems = dbService.getTodoItemListFromDB();
 
         ListView todolist = (ListView) findViewById(R.id.activity_main_todolist_lv);

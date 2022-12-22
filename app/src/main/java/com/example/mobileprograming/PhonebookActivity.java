@@ -28,6 +28,13 @@ public class PhonebookActivity extends AppCompatActivity {
 
         dbService.createContactTable();
 
+        // 샘플 연락처 추가
+        dbService.insertContactItem("조셉", "010-0000-0000", 0);
+        dbService.insertContactItem("필라테스", "010-3002-4300", 1);
+        dbService.insertContactItem("조현석", "010-1111-1111", 1);
+        dbService.insertContactItem("이호욱", "010-2222-2222", 0);
+
+
         ArrayList<ContactItem> contactItems = dbService.getContactItemListFromDB();
 
         ListView contactList = (ListView) findViewById(R.id.activity_phonebook_contactlist_lv);
