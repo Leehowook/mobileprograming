@@ -136,6 +136,12 @@ public class DatabaseService {
         }
     }
 
+    public void clearContactTable(){
+        if(database!= null) {
+            String sql = "delete from contact";
+            database.execSQL(sql);
+        }
+    }
     public void deleteToDoItem(int id){
         if(database!= null) {
             String sql = "delete from todo where todo_id = ?";
