@@ -17,12 +17,15 @@ public class SplashActivity extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("todo.db", MODE_PRIVATE, null);
         DatabaseService dbService = new DatabaseService(db);
 
+
         dbService.createToDoTable();
 
         // 샘플 일정 추가
         dbService.insertToDoItem("마트 가기", "사과, 당근", "1600000000000 12:00");
         dbService.insertToDoItem("운동하기", "달리기, 헬스", "1600003333333 12:00");
         dbService.insertToDoItem("코딩하기", "안드로이드, 자바", "1600011111000 12:00");
+
+        dbService.createContactTable();
 
         // 샘플 연락처 추가
         dbService.insertContactItem("조셉", "010-0000-0000", 0);
