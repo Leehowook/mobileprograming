@@ -65,11 +65,12 @@ public class TodoListAdapter extends BaseAdapter {
         todoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) return;
                 dbService.deleteToDoItem(todoItem.getId());
                 dataList.remove(position);
-                notifyDataSetChanged();
                 Toast toast = Toast.makeText(parent.getContext(), todoItem.getTitle() +"일정을 완료하였습니다.", Toast.LENGTH_SHORT);
                 toast.show();
+                notifyDataSetChanged();
             }
         });
 
@@ -85,6 +86,7 @@ public class TodoListAdapter extends BaseAdapter {
             }
         });
 
+        todoCheckBox.setChecked(todoItem.getIsDone());
         todoTitle.setText(todoItem.getTitle());
         todoContent.setText(todoItem.getContent());
         todoDate.setText(dateStr + " " + time);
